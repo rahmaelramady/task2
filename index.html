@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="تقرير عن روبوتات الدردشة (Chatbots) في منصات الويب ودورها في الرد الفوري وتحسين الدعم الفني">
+    <title>روبوتات الدردشة (Chatbots) في منصات الويب</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Tahoma", "Arial", sans-serif;
+            background: linear-gradient(135deg, #eef3ff 0%, #f8f7ff 50%, #eef8ff 100%);
+            color: #20233a;
+            line-height: 1.95;
+        }
+
+        a {
+            color: #4b35a8;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            width: min(1120px, 92%);
+            margin: auto;
+        }
+
+        header {
+            background:
+                linear-gradient(135deg, rgba(57, 32, 126, .96), rgba(88, 64, 176, .92)),
+                url("images/chatbots-report.jpg") center/cover;
+            color: white;
+            padding: 55px 0 42px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            width: 360px;
+            height: 360px;
+            border-radius: 50%;
+            background: rgba(255,255,255,.08);
+            top: -180px;
+            left: -100px;
+        }
+
+        .hero {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1.35fr .65fr;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,.15);
+            border: 1px solid rgba(255,255,255,.3);
+            padding: 7px 16px;
+            border-radius: 999px;
+            margin-bottom: 14px;
+            font-size: 14px;
+        }
+
+        h1 {
+            font-size: clamp(30px, 5vw, 52px);
+            line-height: 1.25;
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            opacity: .95;
+            max-width: 760px;
+        }
+
+        .student-card {
+            background: rgba(255,255,255,.12);
+            border: 1px solid rgba(255,255,255,.28);
+            border-radius: 20px;
+            padding: 22px;
+            backdrop-filter: blur(8px);
+        }
+
+        .student-card p {
+            margin-bottom: 7px;
+        }
+
+        .student-card strong {
+            color: #fff;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(255,255,255,.95);
+            border-bottom: 1px solid #ddd8f3;
+            box-shadow: 0 5px 18px rgba(45, 31, 91, .08);
+        }
+
+        .nav-inner {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 10px 0;
+        }
+
+        nav a {
+            white-space: nowrap;
+            padding: 8px 14px;
+            border-radius: 10px;
+            color: #3f3477;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            background: #eee9ff;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 35px 0 60px;
+        }
+
+        section {
+            background: #fff;
+            border: 1px solid #e5e1f5;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(57, 45, 110, .07);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #3d2c85;
+            border-right: 6px solid #7659d9;
+            padding-right: 14px;
+            margin-bottom: 20px;
+            font-size: 27px;
+        }
+
+        h3 {
+            color: #4b35a8;
+            margin: 24px 0 10px;
+            font-size: 21px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        strong, b {
+            color: #35266e;
+        }
+
+        .intro {
+            font-size: 17px;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-height: 430px;
+            object-fit: cover;
+            border-radius: 18px;
+            margin: 8px 0 24px;
+            border: 1px solid #ddd8f3;
+            box-shadow: 0 8px 24px rgba(42, 32, 88, .12);
+        }
+
+        .note {
+            background: #f5f2ff;
+            border-right: 5px solid #7659d9;
+            padding: 15px 18px;
+            border-radius: 10px;
+            margin: 18px 0;
+        }
+
+        ul, ol {
+            padding-right: 28px;
+            margin: 10px 0 18px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .comparison-wrapper {
+            overflow-x: auto;
+            margin-top: 18px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 680px;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        th {
+            background: #4a3693;
+            color: white;
+            padding: 13px;
+            border: 1px solid #d7d0f0;
+        }
+
+        td {
+            padding: 13px;
+            border: 1px solid #ddd8ef;
+            vertical-align: top;
+        }
+
+        tr:nth-child(even) td {
+            background: #f8f6ff;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .card {
+            background: linear-gradient(145deg, #f8f6ff, #ffffff);
+            border: 1px solid #e3def5;
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        .references {
+            counter-reset: refs;
+        }
+
+        .references li {
+            padding: 9px 12px;
+            margin-bottom: 9px;
+            background: #faf9ff;
+            border: 1px solid #e7e2f5;
+            border-radius: 10px;
+        }
+
+        .references a {
+            word-break: break-word;
+        }
+
+        .back-top {
+            display: inline-block;
+            margin-top: 12px;
+            background: #4a3693;
+            color: white;
+            padding: 9px 16px;
+            border-radius: 9px;
+        }
+
+        .back-top:hover {
+            background: #38276f;
+            text-decoration: none;
+        }
+
+        footer {
+            background: #25194f;
+            color: #eeeaff;
+            text-align: center;
+            padding: 25px 15px;
+        }
+
+        footer p {
+            margin: 4px 0;
+        }
+
+        @media (max-width: 800px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 21px;
+            }
+
+            .section-title {
+                font-size: 23px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body id="top">
+
+<header>
+    <div class="container hero">
+        <div>
+            <span class="badge">تقرير بحثي – تطبيقات الإنترنت والمنصات الإلكترونية</span>
+            <h1>روبوتات الدردشة (Chatbots) في منصات الويب</h1>
+            <p class="subtitle">
+                كيف تستخدم المواقع الحديثة أدوات الذكاء الاصطناعي للرد الفوري على استفسارات الزوار وتحسين الدعم الفني
+            </p>
+        </div>
+
+        <div class="student-card">
+            <p><strong>الاسم:</strong> رحمة علي علي محمد الرمادي</p>
+            <p><strong>الرقم الجامعي:</strong> 2501506</p>
+        </div>
+    </div>
+</header>
+
+<nav>
+    <div class="container nav-inner">
+        <a href="#introduction">المقدمة</a>
+        <a href="#topic">عرض الموضوع</a>
+        <a href="#types">الأنواع</a>
+        <a href="#how">طريقة العمل</a>
+        <a href="#instant">الرد الفوري</a>
+        <a href="#support">الدعم الفني</a>
+        <a href="#success">خطوات النجاح</a>
+        <a href="#challenges">التحديات</a>
+        <a href="#future">المستقبل</a>
+        <a href="#references">المراجع</a>
+    </div>
+</nav>
+
+<main class="container">
+
+    <section id="introduction">
+        <h2 class="section-title">المقدمة</h2>
+
+        <img class="hero-image"
+             src="images/chatbots-report.jpg"
+             alt="روبوت دردشة يمثل استخدام Chatbots في مواقع الويب">
+
+        <p class="intro">
+            أصبح الإنترنت اليوم الوسيلة الأولى التي يلجأ إليها الناس للشراء وطلب الخدمات والحصول على المعلومات،
+            وصار الزائر يتوقع أن يجد إجابة سؤاله في ثوانٍ دون أن ينتظر رد موظف أو يتنقل بين عشرات الصفحات.
+            ومن هنا ظهرت <strong>روبوتات الدردشة (Chatbots)</strong>، وهي تطبيقات برمجية تتواصل مع الأشخاص عن طريق الكتابة أو الصوت [1].
+        </p>
+
+        <p>
+            وتكمن أهمية هذه الروبوتات في أنها تعمل طوال الوقت دون توقف [5]، وتجيب عن الأسئلة المتكررة لحظة وصولها،
+            فتخفف العبء عن فريق الدعم الفني وتتيح له التفرغ للمشكلات الأصعب، كما تساعد المؤسسات على خفض تكاليف خدمة العملاء [4].
+            ويتناول هذا التقرير مفهوم روبوتات الدردشة وأنواعها، وطريقة عملها، وكيف تستخدمها المواقع للرد الفوري على الزوار،
+            ودورها في تحسين الدعم الفني، ثم أهم التحديات التي تواجهها.
+        </p>
+    </section>
+
+    <section id="topic">
+        <h2 class="section-title">عرض الموضوع</h2>
+
+        <div id="types">
+            <h3>أولًا: مفهوم روبوتات الدردشة وأنواعها</h3>
+
+            <p>
+                تعرّف شركة IBM روبوت الدردشة بأنه تطبيق برمجي يتواصل مع الناس عبر النص أو الصوت،
+                وتوضح أن هذه الروبوتات كانت موجودة قبل ظهور الذكاء الاصطناعي التوليدي، فليس كل روبوت دردشة يعمل بالذكاء الاصطناعي [1].
+                ويمكن تقسيمها إلى نوعين رئيسيين:
+            </p>
+
+            <ul>
+                <li>
+                    <strong>روبوتات تعمل بقواعد محددة مسبقًا:</strong>
+                    تتبع ردودًا مكتوبة سلفًا وشجرة اختيارات، وغالبًا تعرض على الزائر أزرارًا يختار منها دون كتابة،
+                    مثل «تتبع الطلب» أو «ساعات العمل» [1][5].
+                </li>
+                <li>
+                    <strong>روبوتات تعمل بالذكاء الاصطناعي:</strong>
+                    تستخدم معالجة اللغة الطبيعية وتعلّم الآلة لفهم قصد العميل من سؤاله، وتحسّن أداءها مع الوقت [6].
+                </li>
+            </ul>
+
+            <p>
+                ويخلط كثيرون بين روبوت الدردشة ومصطلحات قريبة منه. فالذكاء الاصطناعي المحادثي
+                <strong>(Conversational AI)</strong> فئة أوسع من التقنيات التي تمكّن الأنظمة من فهم اللغة البشرية والرد عليها،
+                أما روبوت الدردشة فهو أحد تطبيقاتها. ويُستخدم مصطلح «الوكيل الافتراضي»
+                <strong>(Virtual Agent)</strong> أحيانًا بنفس المعنى، وأحيانًا أخرى لوصف أنظمة أكثر تقدمًا تصل إلى تطبيقات العمل
+                وتنفذ مهام أكثر تعقيدًا [1].
+            </p>
+        </div>
+
+        <div id="how">
+            <h3>ثانيًا: كيف تعمل داخل الموقع</h3>
+
+            <p>تمر المحادثة مع روبوت الدردشة عادةً بالخطوات التالية:</p>
+
+            <ol>
+                <li>يكتب الزائر سؤاله في نافذة المحادثة الظاهرة على الصفحة.</li>
+                <li>يحلل الروبوت الجملة ويحدد ما يريده الزائر فعلًا.</li>
+                <li>يبحث عن الإجابة المناسبة في قاعدة المعلومات أو قائمة الأسئلة الشائعة الخاصة بالموقع.</li>
+                <li>يرسل الرد فورًا، وإذا لم يجد حلًا يحوّل المحادثة إلى موظف مع نقل التفاصيل التي جمعها [5][6].</li>
+            </ol>
+
+            <div class="note">
+                <strong>مثال تقني مبسط:</strong>
+                يبدأ المستخدم بالسؤال، ثم يقوم الروبوت بتحليل الرسالة، ومطابقة السؤال مع المعرفة المتاحة،
+                وبعدها يعرض الإجابة أو يحوّل المحادثة إلى موظف عند الحاجة.
+            </div>
+
+            <p>
+                وتوفر الشركات التقنية منصات جاهزة لبناء هذه الروبوتات، مثل خدمات IBM Watson التي تساعد على إنشاء
+                روبوت يفهم اللغة الطبيعية ويمكن إضافته إلى الموقع أو التطبيق أو صفحات التواصل الاجتماعي [7].
+            </p>
+        </div>
+
+        <div id="instant">
+            <h3>ثالثًا: استخدام المواقع للرد الفوري على الزوار</h3>
+
+            <p>
+                تعتمد المواقع الحديثة على الروبوتات في الأسئلة البسيطة المتكررة. فقد ذكر المدير التقني لشركة Zendesk
+                في منطقة أوروبا والشرق الأوسط وأفريقيا أن الروبوتات حل مناسب لأسئلة مثل «أين فاتورتي؟» [4]،
+                كما تذكر IBM أمثلة مثل مساعدة العميل على استبدال منتج أو الإجابة عن أسئلة تخص مزايا الموظفين [1].
+            </p>
+
+            <p>ومن الأمثلة التوضيحية المبسطة على ذلك:</p>
+
+            <ul>
+                <li><strong>متجر إلكتروني:</strong> يسأل الزائر «أين طلبي؟» فيعرض الروبوت حالة الشحن فورًا.</li>
+                <li><strong>موقع جامعة:</strong> يسأل الطالب عن مواعيد التسجيل فيحصل على الإجابة من صفحة الأسئلة الشائعة.</li>
+                <li><strong>موقع خدمي:</strong> ينسى المستخدم كلمة المرور فيرشده الروبوت إلى خطوات استرجاعها.</li>
+            </ul>
+
+            <p>
+                وأهم ما يميز هذه الروبوتات هو التوافر؛ فهي جاهزة في كل ساعة وكل يوم، ولا تحتاج إلى استراحة أو إجازة،
+                وتتعامل مع عدد كبير من المحادثات في وقت واحد [5].
+            </p>
+        </div>
+
+        <div id="support">
+            <h3>رابعًا: دورها في تحسين الدعم الفني</h3>
+
+            <p>
+                تساهم الروبوتات في تحسين الدعم الفني من أكثر من جانب. فمن ناحية التكلفة، ذكرت Zendesk أن بعض عملائها
+                حققوا وفرًا يصل إلى 30% عند أتمتة الاستفسارات البسيطة، مع ارتفاع في درجات رضا العملاء [4].
+                ومن ناحية العمل، يتفرغ الموظفون للمشكلات الجديدة والمعقدة التي تحتاج إلى تحليل وإلى فهم لمشاعر العميل،
+                بينما يتولى الروبوت المشكلات المتكررة [5]. وتصف Zendesk دور الذكاء الاصطناعي أيضًا بأنه
+                <strong>مساعد للموظف (agent co-pilot)</strong> وليس بديلًا عنه [4].
+            </p>
+
+            <p>
+                ويمكن توضيح الفرق بين الطرفين بالمقارنة التالية: الروبوت أسرع في الرد لأن إجاباته جاهزة،
+                ويتفوق في التعامل مع المشكلات المعروفة، لكنه يلتزم بنص محدد وقد يفوته الانتباه إلى نبرة العميل أو درجة انزعاجه.
+                أما الموظف فيستطيع تشخيص مشكلة جديدة والتعاطف مع العميل، لكنه يعمل في ساعات محددة ولا يستطيع إدارة عدد كبير
+                من المحادثات بنفس السرعة [5]. ولهذا تُعد الخدمة الأفضل هي التي تجمع نقاط قوة الطرفين.
+            </p>
+
+            <div class="comparison-wrapper">
+                <table>
+                    <tr>
+                        <th>الجانب</th>
+                        <th>روبوت الدردشة</th>
+                        <th>الموظف البشري</th>
+                    </tr>
+                    <tr>
+                        <td>سرعة الرد</td>
+                        <td>سريعة جدًا ومتاحة على مدار الساعة</td>
+                        <td>تتأثر بساعات العمل وحجم الطلبات</td>
+                    </tr>
+                    <tr>
+                        <td>الأسئلة المتكررة</td>
+                        <td>مناسب جدًا للأسئلة المعروفة</td>
+                        <td>يمكنه التعامل معها، لكن ذلك يستهلك وقتًا</td>
+                    </tr>
+                    <tr>
+                        <td>المشكلات المعقدة</td>
+                        <td>قد يواجه صعوبة في الحالات الجديدة</td>
+                        <td>أقدر على التحليل والتشخيص والتعامل مع الاستثناءات</td>
+                    </tr>
+                    <tr>
+                        <td>التعاطف وفهم المشاعر</td>
+                        <td>محدود</td>
+                        <td>أكثر قدرة على فهم الموقف والاستجابة الإنسانية</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div id="success">
+            <h3>خامسًا: خطوات لنجاح تطبيق الروبوت في الموقع</h3>
+
+            <p>
+                يقترح الخبراء عدة ممارسات تجعل الروبوت مفيدًا فعلًا للزائر وليس عائقًا أمامه، منها [5]:
+            </p>
+
+            <ul>
+                <li>تجهيز محادثات للأسئلة الأكثر تكرارًا على كل قنوات التواصل، حتى يجيب الروبوت عنها في أي وقت.</li>
+                <li>التأكد من قدرة الروبوت على تحويل المحادثة إلى موظف مع نقل كل التفاصيل التي جمعها، حتى لا يضطر الزائر إلى تكرار شكواه.</li>
+                <li>تدريب الموظفين على التعامل مع الحالات المعقدة والمواقف العاطفية التي لا يحسنها الروبوت.</li>
+                <li>تحديث الإجابات المتاحة للروبوت باستمرار بحيث تبقى سريعة ومناسبة لأكثر المشكلات أهمية.</li>
+            </ul>
+
+            <p>
+                وتشير Gartner إلى أن على مسؤولي خدمة العملاء توجيه الزوار إلى الروبوت عندما تناسب مشكلتهم ذلك،
+                وإلى قنوات أخرى عندما تكون أنسب [2]. كما أن وضوح ما يستطيع الروبوت فعله وما لا يستطيع يقلل من إحباط المستخدمين.
+            </p>
+        </div>
+
+        <div id="challenges">
+            <h3>سادسًا: التحديات</h3>
+
+            <p>
+                رغم هذه الفوائد، لا تخلو التجربة من مشكلات. ففي استطلاع أجرته Forrester لصالح شركة Cyara
+                على أكثر من 1500 مستهلك، قال ثلاثة أرباع المشاركين إن روبوتات خدمة العملاء لا تستطيع التعامل مع الأسئلة المعقدة [3].
+                كما أظهر استطلاع لشركة Gartner شمل 497 عميلًا أن 8% فقط منهم استخدموا روبوت دردشة في آخر تجربة خدمة مروا بها،
+                وأن الروبوتات لا تناسب كل أنواع المشكلات، ولذلك ينبغي توجيه العميل إليها عندما تناسب مشكلته فقط [2].
+            </p>
+
+            <p>
+                ومن الصعوبات الأخرى الحاجة إلى صيانة وتحديث مستمرين، وضعف التعامل مع الاستفسارات الحساسة أمنيًا
+                ومع المواقف العاطفية [6]، فمعرفة الروبوت محدودة بما سبق حله أو إدخاله إليه [5].
+            </p>
+
+            <p>
+                ومع ذلك تتوقع Gartner أن تصبح روبوتات الدردشة القناة الرئيسية لخدمة العملاء لدى نحو ربع المؤسسات بحلول عام 2027 [3].
+                ويتضح من ذلك أن نجاح الروبوت يعتمد على استخدامه في المكان المناسب، مع وجود طريق سهل لتحويل الزائر إلى موظف بشري عند الحاجة.
+            </p>
+        </div>
+
+        <div id="future">
+            <h3>سابعًا: مستقبل روبوتات الدردشة في المواقع</h3>
+
+            <p>
+                تتجه روبوتات الدردشة إلى مزيد من التطور مع تقدم الذكاء الاصطناعي التوليدي، لكن Gartner تنبه إلى أن هذا التطور
+                قد يزيد حيرة العملاء بشأن ما تستطيع الروبوتات فعله وما لا تستطيع [2].
+            </p>
+
+            <p>
+                وتوضح IBM أن بعض وكلاء الذكاء الاصطناعي <strong>(AI Agents)</strong> يتضمن واجهة محادثة،
+                لكن المحادثة ليست إلا جزءًا من وظيفته، وأن بعض الأنظمة المتقدمة تتصل بتطبيقات العمل وتنفذ مهام فعلية
+                بدل الاكتفاء بالرد على الأسئلة [1].
+            </p>
+
+            <p>
+                وفي مجال الدعم الفني تتوقع Zendesk أن يعمل الذكاء الاصطناعي كمساعد للموظف، وأن يراجع جودة كل المحادثات
+                تلقائيًا ويحيل إلى المراجعة البشرية الحالات التي تحتاج ذلك فقط [4].
+                ومع هذا التطور يبقى دور الموظف البشري مهمًا في الحالات الجديدة والمعقدة والمواقف التي تحتاج إلى تعاطف [5].
+            </p>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">ملخص سريع</h2>
+
+        <div class="cards">
+            <div class="card">
+                <h3>⚡ سرعة الاستجابة</h3>
+                <p>تساعد Chatbots في الإجابة عن الأسئلة المتكررة بسرعة وفي أي وقت.</p>
+            </div>
+
+            <div class="card">
+                <h3>🤖 أتمتة الخدمة</h3>
+                <p>تقلل الأعمال المتكررة وتتيح لموظفي الدعم التركيز على المشكلات الأكثر تعقيدًا.</p>
+            </div>
+
+            <div class="card">
+                <h3>👨‍💻 التعاون مع الإنسان</h3>
+                <p>أفضل استخدام للروبوت يكون مع وجود مسار واضح لتحويل الحالات التي تحتاج إلى موظف بشري.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="references">
+        <h2 class="section-title">المراجع</h2>
+
+        <ol class="references">
+            <li>
+                <strong>[1] IBM.</strong> (2026). What is a chatbot? IBM Think.
+                <br>
+                <a href="https://ibm.com/topics/chatbots" target="_blank" rel="noopener noreferrer">
+                    https://ibm.com/topics/chatbots
+                </a>
+            </li>
+
+            <li>
+                <strong>[2] CX Today.</strong> (n.d.). Gartner: Just 8 percent of consumers used a chatbot during their latest service experience.
+                <br>
+                <a href="https://www.cxtoday.com/customer-analytics-intelligence/customer_chatbot_usage_sit_at_8_gartner_reveals/"
+                   target="_blank" rel="noopener noreferrer">
+                    رابط المصدر
+                </a>
+            </li>
+
+            <li>
+                <strong>[3] TechCrunch.</strong> (n.d.). Consumers find chatbots disappointing, but that won’t harm adoption.
+                <br>
+                <a href="https://techcrunch.com/?p=2484561" target="_blank" rel="noopener noreferrer">
+                    رابط المصدر
+                </a>
+            </li>
+
+            <li>
+                <strong>[4] Technology Magazine.</strong> (n.d.). Zendesk: How AI chatbots can transform customer service.
+                <br>
+                <a href="https://aimagazine.com/articles/zendesk-how-ai-chatbots-can-transform-customer-service"
+                   target="_blank" rel="noopener noreferrer">
+                    رابط المصدر
+                </a>
+            </li>
+
+            <li>
+                <strong>[5] Selby, P.</strong> (2019, July 10). Combine humans and bots for a winning customer service experience. CustomerThink.
+                <br>
+                <a href="https://customerthink.com/combine-humans-and-bots-for-a-winning-customer-service-experience/"
+                   target="_blank" rel="noopener noreferrer">
+                    رابط المصدر
+                </a>
+            </li>
+
+            <li>
+                <strong>[6] Mava.</strong> (n.d.). AI chatbots for customer service: Pros, cons &amp; best practices.
+                <br>
+                <a href="https://www.mava.app/blog/ai-chatbots-for-customer-service-pros-cons-best-practices"
+                   target="_blank" rel="noopener noreferrer">
+                    رابط المصدر
+                </a>
+            </li>
+
+            <li>
+                <strong>[7] Cubet.</strong> (2023, June 19). IBM Watson chatbot.
+                <br>
+                <a href="https://cubettech.com/resources/blog/ibm-watson-chatbot/"
+                   target="_blank" rel="noopener noreferrer">
+                    رابط المصدر
+                </a>
+            </li>
+        </ol>
+
+        <a class="back-top" href="#top">↑ العودة إلى أعلى الصفحة</a>
+    </section>
+
+</main>
+
+<footer>
+    <p><strong>روبوتات الدردشة (Chatbots) في منصات الويب</strong></p>
+    <p>الاسم: رحمة علي علي محمد الرمادي — الرقم الجامعي: 2501506</p>
+</footer>
+
+</body>
+</html>
